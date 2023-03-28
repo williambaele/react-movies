@@ -15,3 +15,17 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Hind&family=Puritan:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pavanam&display=swap');
+
+
+
+h1,h2,h3 {
+  font-family: 'Hind', sans-serif;
+}
+
+p,a,input {
+  font-family: 'Pavanam', sans-serif;
+}

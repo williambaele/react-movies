@@ -18,18 +18,16 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-[#1c2541]">
       <Header/>
-      <div className="container mx-auto flex flex-col gap-4 py-4">
-        <div className="w-1/3 self-center">
+      <div className="container mx-auto flex flex-col md:gap-4 py-4">
+        <div className="md:w-1/3 w-2/3 self-center">
           <form>
-            <div>
-              <div className="flex rounded-md overflow-hidden w-full">
-                <input type="text" className="w-full rounded-md rounded-r-none outline-none pl-4" placeholder='Your next movie' value={search} onChange={(e) => setSearch(e.target.value)}/>
-                <button className="bg-indigo-600 text-white px-6 text-lg font-semibold py-2 rounded-r-md outline-none">Go</button>
-              </div>
+            <div className="flex rounded-md overflow-hidden">
+              <input type="text" className="w-full rounded-md rounded-r-none outline-none pl-4" placeholder='Your next movie' value={search} onChange={(e) => setSearch(e.target.value)}/>
+              <button className="bg-[#3a506b] text-white px-6 text-lg font-semibold py-2 rounded-r-md outline-none">Go</button>
             </div>
           </form>
         </div>
-        <div class="grid grid-cols2 md:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-10 px-4 md:px-0">
         {moviesData.map((movie) => (
             <Card movie={movie} key={movie.id} />
           ))}
