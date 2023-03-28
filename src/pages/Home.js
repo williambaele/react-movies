@@ -27,7 +27,7 @@ const Home = () => {
             </div>
           </form>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-10 px-4 md:px-0">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 py-10 px-4 md:px-0">
         {moviesData.map((movie) => (
             <Card movie={movie} key={movie.id} />
           ))}
