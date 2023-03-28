@@ -8,6 +8,77 @@ const Card = ({ movie }) => {
     return [dd, mm, yy].join("/");
   };
 
+
+  const genreFinder = () => {
+    let genreArray = [];
+    for (let i = 0; i < movie.genre_ids.length; i++) {
+      switch (movie.genre_ids[i]) {
+        case 28:
+          genreArray.push({ id: 28, name: `Action` });
+          break;
+        case 12:
+          genreArray.push({ id: 12, name: `Aventure` });
+          break;
+        case 16:
+          genreArray.push({ id: 16, name: `Animation` });
+          break;
+        case 35:
+          genreArray.push({ id: 35, name: `Comédie` });
+          break;
+        case 80:
+          genreArray.push({ id: 80, name: `Policier` });
+          break;
+        case 99:
+          genreArray.push({ id: 99, name: `Documentaire` });
+          break;
+        case 18:
+          genreArray.push({ id: 18, name: `Drame` });
+          break;
+        case 10751:
+          genreArray.push({ id: 10751, name: `Famille` });
+          break;
+        case 14:
+          genreArray.push({ id: 14, name: `Fantasy` });
+          break;
+        case 36:
+          genreArray.push({ id: 36, name: `Histoire` });
+          break;
+        case 27:
+          genreArray.push({ id: 27, name: `Horreur` });
+          break;
+        case 10402:
+          genreArray.push({ id: 10402, name: `Musique` });
+          break;
+        case 9648:
+          genreArray.push({ id: 9648, name: `Mystère` });
+          break;
+        case 10749:
+          genreArray.push({ id: 10749, name: `Romance` });
+          break;
+        case 878:
+          genreArray.push({ id: 878, name: `Science-fiction` });
+          break;
+        case 10770:
+          genreArray.push({ id: 10770, name: `Téléfilm` });
+          break;
+        case 53:
+          genreArray.push({ id: 53, name: `Thriller` });
+          break;
+        case 10752:
+          genreArray.push({ id: 10752, name: `Guerre` });
+          break;
+        case 37:
+          genreArray.push({ id: 37, name: `Western` });
+          break;
+        default:
+          break;
+      }
+    }
+    return genreArray.map((genre) => <div className="bg-[#3a506b] py-0.5 px-2 rounded-lg flex items-center" key={genre}>
+    <p className="text-sm text-gray-300">{genre.name}</p>
+  </div>);
+  };
+
   return (
     <div className="grid gap-4 shadow-sm hover:shadow-md">
       <div className="flex bg-[#0b132b] p-4 rounded-lg gap-6 hover:shadow-md" key={movie.id}>
@@ -21,6 +92,7 @@ const Card = ({ movie }) => {
           <h2 className="font-bold text-2xl text-left text-gray-200 content-start">
             {movie.original_title}
           </h2>
+          <p className="text-gray-400">Sorti le {dateFormater(movie.release_date)}</p>
           <div className="flex gap-1 items-center">
             <svg className="pb-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFFF00" class="bi bi-star-fill" viewBox="0 0 16 16">
               <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
@@ -30,7 +102,13 @@ const Card = ({ movie }) => {
               <p className="text-gray-200 text-xs pt-1">({movie.vote_count})</p>
             </div>
           </div>
-          <p className="text-gray-400">Sorti le {dateFormater(movie.release_date)}</p>
+          <div className="flex gap-3">
+          {movie.genre_ids
+          ? genreFinder()
+          : movie.genres.map((genre) => <div className="bg-[#3a506b] py-0.5 px-2 rounded-lg flex items-center" key={genre}>
+          <p className="text-xl text-gray-300">{genre.name}</p>
+        </div>)}
+          </div>
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-xl text-left text-gray-200">Synposis</h3>
             <p className="text-gray-400">
