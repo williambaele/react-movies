@@ -25,7 +25,10 @@ const Card = ({ movie }) => {
             <svg className="pb-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFFF00" class="bi bi-star-fill" viewBox="0 0 16 16">
               <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
             </svg>
-            <p className="font-large text-lg text-gray-200 italic">{movie.vote_average}</p>
+            <div className="flex gap-1 items-center">
+              <p className="font-large text-lg text-gray-200 italic">{movie.vote_average}</p>
+              <p className="text-gray-200 text-xs pt-1">({movie.vote_count})</p>
+            </div>
           </div>
           <p className="text-gray-400">Sorti le {dateFormater(movie.release_date)}</p>
           <div className="flex flex-col gap-2">
