@@ -6,7 +6,8 @@ import Header from '../components/Header';
 
 const Home = () => {
     const [moviesData, setMoviesData] = useState([]);
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState("boxe");
+    const [sortGoodBad, setSortGoodBad] = useState(null);
 
     useEffect(() => {
       axios
@@ -22,13 +23,25 @@ const Home = () => {
         <div className="md:w-1/3 w-2/3 self-center">
           <form>
             <div className="flex rounded-md overflow-hidden">
-              <input type="text" className="w-full rounded-md rounded-r-none outline-none pl-4" placeholder='Your next movie' value={search} onChange={(e) => setSearch(e.target.value)}/>
-              <button className="bg-[#3a506b] text-white px-6 text-lg font-semibold py-2 rounded-r-md outline-none">Go</button>
+              <input type="text" className="py-2 w-full rounded-md rounded-r-none outline-none pl-4" placeholder='Your next movie'  onChange={(e) => setSearch(e.target.value)}/>
             </div>
           </form>
         </div>
+        <div className="md:w-1/3 w-2/3 flex gap-3 self-center py-2">
+          <button className="bg-[#0b132b] w-1/2 py-1 rounded-lg">
+            <p className="text-gray-300 font-bold" onClick={() => setSortGoodBad("goodToBad")}>Top</p>
+          </button>
+          <button className="bg-[#0b132b] w-1/2 py-1 rounded-lg">
+            <p className="text-gray-300 font-bold" onClick={() => setSortGoodBad("badToGood")}>Flop</p>
+          </button>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 py-10 px-4 md:px-0">
-        {moviesData.map((movie) => (
+        {moviesData
+        .slice(0, 12)
+        .sort((a,b) => {
+          if()
+        })
+        .map((movie) => (
             <Card movie={movie} key={movie.id} />
           ))}
         </div>
