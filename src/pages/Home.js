@@ -39,10 +39,10 @@ const Home = () => {
         {moviesData
         .slice(0, 12)
         .sort((a,b) => {
-          if(sortGoodBad === "goodToBad"){
-            return b.vote_average - a.vote_average;
-          } else {
+          if(sortGoodBad === "badToGood"){
             return a.vote_average - b.vote_average;
+          } else {
+            return b.vote_average - a.vote_average;
           }
         })
         .map((movie) => (

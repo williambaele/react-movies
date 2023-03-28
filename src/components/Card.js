@@ -56,7 +56,7 @@ const Card = ({ movie }) => {
           genreArray.push({ id: 10749, name: `Romance` });
           break;
         case 878:
-          genreArray.push({ id: 878, name: `Science-fiction` });
+          genreArray.push({ id: 878, name: `Fiction` });
           break;
         case 10770:
           genreArray.push({ id: 10770, name: `Téléfilm` });
@@ -74,13 +74,13 @@ const Card = ({ movie }) => {
           break;
       }
     }
-    return genreArray.map((genre) => <div className="bg-[#3a506b] py-0.5 px-2 rounded-lg flex items-center" key={genre}>
-    <p className="text-sm text-gray-300">{genre.name}</p>
+    return genreArray.map((genre) =>  <div className="flex items-center">
+    <p className="w-fit bg-[#3a506b] py-0.5 px-2 rounded-lg items-center text-xs text-gray-300" key={genre}>{genre.name}</p>
   </div>);
   };
 
   return (
-    <div className="grid gap-4 shadow-sm hover:shadow-md">
+    <div className="grid gap-4 shadow-sm hover:shadow-md overflow-hidden">
       <div className="flex bg-[#0b132b] p-4 rounded-lg gap-6 hover:shadow-md" key={movie.id}>
         {/* <div>
           <img src={movie.strMealThumb} alt="" className="max-h-80 rounded-lg"/>
@@ -102,11 +102,11 @@ const Card = ({ movie }) => {
               <p className="text-gray-200 text-xs pt-1">({movie.vote_count})</p>
             </div>
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-2 flex-wrap">
           {movie.genre_ids
           ? genreFinder()
-          : movie.genres.map((genre) => <div className="bg-[#3a506b] py-0.5 px-2 rounded-lg flex items-center" key={genre}>
-          <p className="text-xl text-gray-300">{genre.name}</p>
+          : movie.genres.map((genre) => <div className="flex flex-wrap items-center">
+          <p className="w-fit bg-[#3a506b] py-0.5 px-2 rounded-lg items-center text-xs text-gray-300" key={genre}>{genre.name}</p>
         </div>)}
           </div>
           <div className="flex flex-col gap-2">
