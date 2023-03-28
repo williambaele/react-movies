@@ -28,18 +28,22 @@ const Home = () => {
           </form>
         </div>
         <div className="md:w-1/3 w-2/3 flex gap-3 self-center py-2">
-          <button className="bg-[#0b132b] w-1/2 py-1 rounded-lg">
-            <p className="text-gray-300 font-bold" onClick={() => setSortGoodBad("goodToBad")}>Top</p>
+          <button onClick={() => setSortGoodBad("goodToBad")} className="bg-[#0b132b] w-1/2 py-1 rounded-lg">
+            <p className="text-gray-300 font-bold">Top</p>
           </button>
-          <button className="bg-[#0b132b] w-1/2 py-1 rounded-lg">
-            <p className="text-gray-300 font-bold" onClick={() => setSortGoodBad("badToGood")}>Flop</p>
+          <button onClick={() => setSortGoodBad("badToGood")} className="bg-[#0b132b] w-1/2 py-1 rounded-lg">
+            <p className="text-gray-300 font-bold">Flop</p>
           </button>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 py-10 px-4 md:px-0">
         {moviesData
         .slice(0, 12)
         .sort((a,b) => {
-          if()
+          if(sortGoodBad === "goodToBad"){
+            return b.vote_average - a.vote_average;
+          } else {
+            return a.vote_average - b.vote_average;
+          }
         })
         .map((movie) => (
             <Card movie={movie} key={movie.id} />

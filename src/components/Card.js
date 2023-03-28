@@ -16,7 +16,7 @@ const Card = ({ movie }) => {
         </div> */}
         <div className="grid gap-2">
           <div className="flex justify-center h-60 ">
-            <img src={"https://image.tmdb.org/t/p/original/" + movie.poster_path} alt={`poster ${movie.original_title}`} className="rounded-lg" />
+          <img className="rounded-lg" src={ movie.poster_path ? "https://image.tmdb.org/t/p/original/" + movie.poster_path : "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"} alt={`affiche ${movie.title}`}/>
           </div>
           <h2 className="font-bold text-2xl text-left text-gray-200 content-start">
             {movie.original_title}
