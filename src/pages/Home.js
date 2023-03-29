@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
     const [moviesData, setMoviesData] = useState([]);
-    const [search, setSearch] = useState("boxe");
+    const [search, setSearch] = useState("james bond");
     const [sortGoodBad, setSortGoodBad] = useState(null);
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const Home = () => {
         <div className="md:w-1/3 w-2/3 self-center">
           <form>
             <div className="flex rounded-md overflow-hidden">
-              <input type="text" className="py-2 w-full rounded-md rounded-r-none outline-none pl-4" placeholder='Your next movie'  onChange={(e) => setSearch(e.target.value)}/>
+              <input type="text" className="py-2 w-full rounded-md rounded-r-none outline-none pl-4" placeholder='Search your next movie'  onChange={(e) => setSearch(e.target.value)}/>
             </div>
           </form>
           <ToastContainer
