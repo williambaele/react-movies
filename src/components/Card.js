@@ -12,10 +12,12 @@ const Card = ({ movie }) => {
       storedData.push(movie.id);
       window.localStorage.movies = storedData;
     }
+    console.log(storedData);
   }
 
   const removeLike = () => {
     let storedData = window.localStorage.movies.split(",");
+    // eslint-disable-next-line eqeqeq
     let newData = storedData.filter((id) => id != movie.id);
     window.localStorage.movies = newData;
   }

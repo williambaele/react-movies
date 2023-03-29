@@ -3,13 +3,10 @@ import React, { useEffect, useState } from 'react';
 import Card from '../components/Card';
 import Header from '../components/Header';
 
+
 const Liked = () => {
 
   const [listData, setListData] = useState([]);
-  const removeAllLikes = () => {
-    let newData = [[]];
-    window.localStorage.movies = newData;
-  }
   useEffect(() => {
     let moviesId = window.localStorage.movies
     ? window.localStorage.movies.split(",")
@@ -18,12 +15,16 @@ const Liked = () => {
     for (let i = 0; i < moviesId.length; i++) {
       axios
       .get(
-        `https://api.themoviedb.org/3/movie/${moviesId[i]}?api_key=ed82f4c18f2964e75117c2dc65e2161d&language=fr-FR`
+        `https://api.themoviedb.org/3/movie/${moviesId[i]}?api_key=1a4b0f5e89813caf7e80649aed21c524&language=fr-FR`
         )
         .then((res) => setListData((listData) => [...listData, res.data]));
       }
     }, []);
-
+    console.log(listData);
+    const removeAllLikes = () => {
+      let newData = [];
+      window.localStorage.movies = newData;
+    }
   return (
     <div className="min-h-screen bg-[#1c2541]">
       <Header/>
