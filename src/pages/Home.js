@@ -37,7 +37,7 @@ const Home = () => {
         </div>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 py-10 px-4 md:px-0">
         {moviesData
-        .slice(0, 12)
+        .slice(0, 20)
         .sort((a,b) => {
           if(sortGoodBad === "badToGood"){
             return a.vote_average - b.vote_average;
