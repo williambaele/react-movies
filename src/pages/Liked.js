@@ -27,8 +27,8 @@ const Liked = () => {
       <div className="container mx-auto flex flex-col md:gap-4 py-4">
         <div className="flex justify-center">
           {listData.length > 0 ?
-            <button className="bg-[#0b132b] w-1/2 py-1 rounded-lg">
-            <p className="text-gray-300 font-bold">Delete all liked movies</p>
+            <button className="bg-[#0b132b] w-1/3 py-1 rounded-lg">
+            <p className="text-gray-300 text-md font-bold">Delete all liked movies</p>
             </button>
           : (
               ""
