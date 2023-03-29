@@ -12,15 +12,19 @@ const Liked = () => {
     ? window.localStorage.movies.split(",")
     : [];
 
+  const fetchData = async () => {
+    const newData = [];
     for (let i = 0; i < moviesId.length; i++) {
-      axios
-      .get(
+      const res = await axios.get(
         `https://api.themoviedb.org/3/movie/${moviesId[i]}?api_key=1a4b0f5e89813caf7e80649aed21c524&language=fr-FR`
-        )
-        .then((res) => setListData((listData) => [...listData, res.data]));
-      }
+      );
+      newData.push(res.data);
+    }
+    setListData(newData);
+  };
+
+  fetchData();
     }, []);
-    console.log(listData);
     const removeAllLikes = () => {
       let newData = [];
       window.localStorage.movies = newData;

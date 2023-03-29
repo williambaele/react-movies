@@ -12,7 +12,7 @@ const Card = ({ movie }) => {
       storedData.push(movie.id);
       window.localStorage.movies = storedData;
     }
-    console.log(storedData);
+    console.log("Movie " + movie.id + " saved");
   }
 
   const removeLike = () => {
