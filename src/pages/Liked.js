@@ -6,7 +6,10 @@ import Header from '../components/Header';
 const Liked = () => {
 
   const [listData, setListData] = useState([]);
-
+  const removeAllLikes = () => {
+    let newData = [[]];
+    window.localStorage.movies = newData;
+  }
   useEffect(() => {
     let moviesId = window.localStorage.movies
     ? window.localStorage.movies.split(",")
@@ -27,8 +30,8 @@ const Liked = () => {
       <div className="container mx-auto flex flex-col md:gap-4 py-4">
         <div className="flex justify-center">
           {listData.length > 0 ?
-            <button className="bg-[#0b132b] w-1/3 py-1 rounded-lg">
-            <p className="text-gray-300 text-md font-bold">Delete all liked movies</p>
+            <button className="bg-[#0b132b] w-1/3 py-1 rounded-lg" onClick={() =>{ removeAllLikes(); window.location.reload();}}>
+              <p className="text-gray-300 text-md font-bold">Delete all liked movies</p>
             </button>
           : (
               ""

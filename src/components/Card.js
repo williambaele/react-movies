@@ -19,6 +19,8 @@ const Card = ({ movie }) => {
     let newData = storedData.filter((id) => id != movie.id);
     window.localStorage.movies = newData;
   }
+
+
   const dateFormater = (date) => {
     let [yy, mm, dd] = date.split("-");
     return [dd, mm, yy].join("/");
