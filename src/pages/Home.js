@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import Card from '../components/Card';
 import Header from '../components/Header';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
     const [moviesData, setMoviesData] = useState([]);
@@ -26,6 +27,18 @@ const Home = () => {
               <input type="text" className="py-2 w-full rounded-md rounded-r-none outline-none pl-4" placeholder='Your next movie'  onChange={(e) => setSearch(e.target.value)}/>
             </div>
           </form>
+          <ToastContainer
+            position="bottom-right"
+            autoClose={4000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+            />
         </div>
         <div className="md:w-1/3 w-2/3 flex gap-3 self-center py-2">
           <button onClick={() => setSortGoodBad("goodToBad")} className="bg-[#0b132b] w-1/2 py-1 rounded-lg">

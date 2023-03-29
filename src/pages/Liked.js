@@ -2,10 +2,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Card from '../components/Card';
 import Header from '../components/Header';
+import { useNavigate } from 'react-router'
 
 
 const Liked = () => {
-
+  const navigate = useNavigate()
   const [listData, setListData] = useState([]);
   useEffect(() => {
     let moviesId = window.localStorage.movies
@@ -26,16 +27,17 @@ const Liked = () => {
   fetchData();
     }, []);
     const removeAllLikes = () => {
-      let newData = [];
-      window.localStorage.movies = newData;
-    }
+  window.localStorage.movies = "";
+  setListData([]);
+  navigate(0)
+};
   return (
     <div className="min-h-screen bg-[#1c2541]">
       <Header/>
       <div className="container mx-auto flex flex-col md:gap-4 py-4">
         <div className="flex justify-center">
           {listData.length > 0 ?
-            <button className="bg-[#0b132b] w-1/3 py-1 rounded-lg" onClick={() =>{ removeAllLikes(); window.location.reload();}}>
+            <button className="bg-[#0b132b] w-1/3 py-1 rounded-lg" onClick={() =>{ removeAllLikes();}}>
               <p className="text-gray-300 text-md font-bold">Delete all liked movies</p>
             </button>
           : (
@@ -47,7 +49,7 @@ const Liked = () => {
           listData.map((movie) => <Card movie={movie} key={movie.id} />)
         ) : (
           <div className="col-span-4 flex justify-center">
-            <h2 className="text-3xl font-bold text-gray-300 text-center">Aucun coup de coeur pour le moment</h2>
+            <h2 className="text-3xl font-bold text-gray-300 text-center">No liked movie</h2>
           </div>
         )}
         </div>

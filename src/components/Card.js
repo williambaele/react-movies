@@ -1,7 +1,10 @@
 import { useLocation } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Card = ({ movie }) => {
   const location = useLocation();
+
 
   const addLike = () => {
     let storedData = window.localStorage.movies
@@ -13,6 +16,16 @@ const Card = ({ movie }) => {
       window.localStorage.movies = storedData;
     }
     console.log("Movie " + movie.id + " saved");
+    toast.success('Film saved !', {
+      position: "bottom-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
   }
 
   const removeLike = () => {
@@ -20,6 +33,16 @@ const Card = ({ movie }) => {
     // eslint-disable-next-line eqeqeq
     let newData = storedData.filter((id) => id != movie.id);
     window.localStorage.movies = newData;
+    toast.success('Movie deleted !', {
+      position: "bottom-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
   }
 
 
@@ -133,11 +156,11 @@ const Card = ({ movie }) => {
             </p>
           </div>
           <div className="flex  gap-4 justify-center">
-            <btn className="hover:scale-125 cursor-pointer" target="_blank" href={`https://www.youtube.com/results?search_query= ${movie.original_title} trailer`} rel="noreferrer">
+            <a className="hover:scale-125 cursor-pointer" target="_blank" href={`https://www.youtube.com/results?search_query= ${movie.original_title} trailer`} rel="noreferrer">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FF0000" className="bi bi-youtube" viewBox="0 0 16 16">
                 <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
               </svg>
-            </btn>
+            </a>
             { location.pathname === "/" ?
               <btn onClick={() => addLike()} className="hover:scale-125 cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FF0000" className="bi bi-heart-fill" viewBox="0 0 16 16">
@@ -145,7 +168,7 @@ const Card = ({ movie }) => {
                 </svg>
               </btn>
             :
-              <btn onClick={() =>{ removeLike(); window.location.reload();}} className="hover:scale-125 cursor-pointer">
+              <btn onClick={() =>{ removeLike(); window.location.reload(false); }} className="hover:scale-125 cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#FF0000" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                   <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
                 </svg>
