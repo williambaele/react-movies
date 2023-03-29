@@ -38,7 +38,9 @@ const Liked = () => {
         {listData.length > 0 ? (
           listData.map((movie) => <Card movie={movie} key={movie.id} />)
         ) : (
-          <h2>Aucun coup de coeur pour le moment</h2>
+          <div className="col-span-4 flex justify-center">
+            <h2 className="text-3xl font-bold text-gray-300 text-center">Aucun coup de coeur pour le moment</h2>
+          </div>
         )}
         </div>
       </div>
